@@ -1,0 +1,86 @@
+// KUMA V6 -- VSPAERO run (build + compute thin geometry + alpha sweep).
+// Headless:  vspscript -script Kuma_V6_vspaero_run.vspscript
+// Outputs .polar/.csv/.stab in the current directory.
+void main()
+{
+    Print( "== Kuma V6 VSPAERO ==" );
+    ClearVSPModel();
+
+    // ---- wing ----
+    string wing_id = AddGeom( "WING", "" );
+    SetGeomName( wing_id, "wing" );
+    SetParmVal( wing_id, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( wing_id, "X_Rel_Location", "XForm", 0.496 );
+    SetParmVal( wing_id, "Z_Rel_Location", "XForm", 0.056 );
+    SetDriverGroup( wing_id, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( wing_id, "Root_Chord", "XSec_1", 0.200 );
+    SetParmVal( wing_id, "Tip_Chord", "XSec_1", 0.150 );
+    SetParmVal( wing_id, "Span", "XSec_1", 0.650 );
+    SetParmVal( wing_id, "Sweep", "XSec_1", 2.115 );
+    SetParmVal( wing_id, "Dihedral", "XSec_1", 7.0 );
+
+    // ---- upright V-tail (V6 enlarged) ----
+    string tail_id = AddGeom( "WING", "" );
+    SetGeomName( tail_id, "vtail" );
+    SetParmVal( tail_id, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( tail_id, "X_Rel_Location", "XForm", 0.770 );
+    SetParmVal( tail_id, "Y_Rel_Location", "XForm", 0.012 );
+    SetParmVal( tail_id, "Z_Rel_Location", "XForm", 0.026 );
+    SetDriverGroup( tail_id, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( tail_id, "Root_Chord", "XSec_1", 0.200 );
+    SetParmVal( tail_id, "Tip_Chord", "XSec_1", 0.150 );
+    SetParmVal( tail_id, "Span", "XSec_1", 0.270 );
+    SetParmVal( tail_id, "Sweep", "XSec_1", 4.289 );
+    SetParmVal( tail_id, "Dihedral", "XSec_1", 45.0 );
+
+    // ---- fuselage pod: NOT included in VLM (a thin-tessellated pod corrupts the
+    //      VLM forces; the fuselage contribution to CL_a/Cm_a/NP is small). ----
+    string pod_id = AddGeom( "POD", "" );
+    SetParmVal( pod_id, "Length", "Design", 0.970 );
+    SetParmVal( pod_id, "FineRatio", "Design", 11.55 );
+    Update();
+    WriteVSPFile( "V6_run.vsp3", SET_ALL );
+
+    // ---- compute thin (VLM) geometry ----
+    string cgname = "VSPAEROComputeGeometry";
+    SetAnalysisInputDefaults( cgname );
+    array<int> thick; thick.push_back( SET_TYPE::SET_ALL );
+    SetIntAnalysisInput( cgname, "GeomSet", thick, 0 );
+    array<int> thin; thin.push_back( SET_TYPE::SET_NONE );
+    SetIntAnalysisInput( cgname, "ThinGeomSet", thin, 0 );
+    string cgres = ExecAnalysis( cgname );
+    PrintResults( cgres );
+
+    // ---- alpha sweep ----
+    string an = "VSPAEROSweep";
+    SetAnalysisInputDefaults( an );
+    array<int> gs; gs.push_back( 0 ); SetIntAnalysisInput( an, "GeomSet", gs, 0 );
+    array<int> rf; rf.push_back( 1 ); SetIntAnalysisInput( an, "RefFlag", rf, 0 );
+    array<string> wid; wid.push_back( wing_id ); SetStringAnalysisInput( an, "WingID", wid, 0 );
+
+    array<double> d(1,0.0);
+    d[0]=0.2275;  SetDoubleAnalysisInput( an, "Sref", d, 0 );
+    d[0]=1.300;   SetDoubleAnalysisInput( an, "bref", d, 0 );
+    d[0]=0.17619; SetDoubleAnalysisInput( an, "cref", d, 0 );
+    d[0]=0.560;   SetDoubleAnalysisInput( an, "Xcg", d, 0 );
+    d[0]=0.0;     SetDoubleAnalysisInput( an, "Ycg", d, 0 );
+    d[0]=0.0;     SetDoubleAnalysisInput( an, "Zcg", d, 0 );
+    d[0]=-4.0;    SetDoubleAnalysisInput( an, "AlphaStart", d, 0 );
+    d[0]= 8.0;    SetDoubleAnalysisInput( an, "AlphaEnd", d, 0 );
+    d[0]=0.0;     SetDoubleAnalysisInput( an, "BetaStart", d, 0 );
+    d[0]=0.0;     SetDoubleAnalysisInput( an, "BetaEnd", d, 0 );
+    d[0]=0.035;   SetDoubleAnalysisInput( an, "MachStart", d, 0 );
+    d[0]=0.035;   SetDoubleAnalysisInput( an, "MachEnd", d, 0 );
+    d[0]=1.4e5;   SetDoubleAnalysisInput( an, "ReCref", d, 0 );
+    d[0]=12.0;    SetDoubleAnalysisInput( an, "Vinf", d, 0 );
+    array<int> n(1,7); SetIntAnalysisInput( an, "AlphaNpts", n, 0 );
+    n[0]=1; SetIntAnalysisInput( an, "BetaNpts", n, 0 );
+    n[0]=1; SetIntAnalysisInput( an, "MachNpts", n, 0 );
+
+    PrintAnalysisInputs( an );
+    string rid = ExecAnalysis( an );
+    PrintResults( rid );
+
+    while ( GetNumTotalErrors() > 0 ) { ErrorObj e = PopLastError(); Print( e.GetErrorString() ); }
+    Print( "== done ==" );
+}

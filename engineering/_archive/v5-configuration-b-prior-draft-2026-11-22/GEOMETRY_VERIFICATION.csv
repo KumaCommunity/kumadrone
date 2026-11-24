@@ -1,0 +1,40 @@
+item,source_doc_value,recomputed_value,unit,status,note
+Fuselage_length,970,970,mm,MATCH,CAD body_cuts 0..970
+Wingspan,1300,1300,mm,MATCH,half-span 650 each side
+Wing_root_chord,200,200,mm,MATCH,
+Wing_tip_chord,150,150,mm,MATCH,
+Wing_taper_ratio,0.75,0.750,-,MATCH,
+Wing_area,0.2275,0.2275,m^2,MATCH,S=b(Cr+Ct)/2
+Aspect_ratio,7.43,7.429,-,MATCH,b^2/S
+MAC,176.19,176.19,mm,MATCH,(2/3)Cr(1+l+l^2)/(1+l)
+Wing_root_LE_x,496,496,mm,MATCH,310+186
+Wing_MAC_LE_x,507.43,507.43,mm,MATCH,
+Station_28pct_MAC,556.76,556.76,mm,MATCH,geometry marker only (not a CG limit)
+Wing_dihedral,7,7,deg,MATCH,hypothesis; not flight validated
+Wing_tip_rise,,79.8,mm,CALCULATED,650*tan7
+Wing_LE_sweep,,2.11,deg,CALCULATED,atan((520-496)/650); no twist
+Wing_incidence,0,0,deg,MATCH,none modeled
+Wing_twist,0,0,deg,MATCH,none modeled
+Wing_AC_25pct_MAC,,551.48,mm,CALCULATED,not stated in docs
+Tail_total_area,0.0792,0.0792,m^2,MATCH,2 panels
+Tail_panel_area,,0.0396,m^2,CALCULATED,240*(190+140)/2
+Tail_V_angle_each,40,40,deg,MATCH,
+Tail_Sh_cos2_proxy,0.0465,0.04648,m^2,MATCH,first-order proxy; area projection is 0.06067
+Tail_Sv_sin2_proxy,0.0327,0.03272,m^2,MATCH,first-order proxy
+Tail_horizontal_span,,391.7,mm,CALCULATED,2*(12+240cos40)
+Tail_horizontal_AR_cos2,,3.301,-,CALCULATED,bh^2/Sh
+Tail_AC_x,,820.11,mm,CALCULATED,
+Tail_arm,0.269,0.2686,m,MATCH,wing AC to tail AC
+Tail_volume_H,0.31,0.3115,-,MATCH,Sh*l/(S*MAC)
+Tail_volume_V,0.030,0.0297,-,MATCH,Sv*l/(S*b)
+Neutral_point,,573.8,mm,CALCULATED,provisional; +-8mm over deps/a_t sweep (see stability.csv)
+Static_margin_empty,,+7.8,%MAC,CALCULATED,provisional; method-dependent
+Static_margin_loaded500,,+8.5,%MAC,CALCULATED,provisional
+CG_empty,560.0,560.02,mm,MATCH,
+CG_loaded500,558.9,558.91,mm,MATCH,
+Fuselage_max_diameter,84,84,mm,MATCH,from body_sections
+Fuselage_internal_volume,,3339.8,cm3,CALCULATED,discretised body of revolution, wall 1.25mm
+Airfoil_2412_thickness,12,12.006,%chord,MATCH,DXF vs analytic
+Airfoil_2412_camber,2,2.000,%chord,MATCH,
+Airfoil_0010_thickness,10,10.002,%chord,MATCH,
+Wing_exposed_wetted_area,,~0.048,m^2,ESTIMATED,upper+lower approx; not used in drag

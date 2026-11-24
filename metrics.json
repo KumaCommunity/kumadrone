@@ -1,0 +1,21 @@
+{
+  "mass_baseline_g": 1307.94,
+  "mass_with_500g_g": 1807.94,
+  "CG_baseline_mm": 560.0209817728642,
+  "CG_loaded_mm": 558.9089476973793,
+  "wing_root_LE_mm": 496,
+  "wing_area_m2": 0.22749999999999998,
+  "span_m": 1.3,
+  "aspect_ratio": 7.42857142857143,
+  "MAC_mm": 176.1904761904762,
+  "LE_MAC_mm": 507.42857142857144,
+  "CG_ref_28pct_MAC_mm": 556.7619047619048,
+  "tail_total_area_m2": 0.0792,
+  "tail_equivalent_horizontal_area_m2": 0.04647646783561044,
+  "tail_equivalent_vertical_area_m2": 0.03272353216438956,
+  "tail_arm_m": 0.2686349206349206,
+  "tail_volume_h": 0.3114811371744861,
+  "tail_volume_v": 0.029723359140744084,
+  "dihedral_deg": 7,
+  "estimates_only": true
+}

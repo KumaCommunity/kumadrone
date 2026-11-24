@@ -1,0 +1,116 @@
+{
+  "wing": {
+    "name": "NACA 2412 wing root",
+    "path": "NACA_2412_Wing_Root_200mm.dxf",
+    "n_vertices": 302,
+    "closure_gap_mm": 0.504,
+    "measured_chord_mm": 200.032,
+    "design_chord_mm": 200.0,
+    "max_thickness_pct_chord": 12.006,
+    "max_thickness_location_xc": 0.298,
+    "design_thickness_pct_chord": 12.0,
+    "max_camber_pct_chord": 2.0,
+    "design_camber_pct_chord": 2.0,
+    "te_gap_pct_chord": 0.2807,
+    "enclosed_area_ratio_to_chord2": 0.08228,
+    "spot_thickness": {
+      "x=0.05": {
+        "measured_tc": 7.134,
+        "analytic_tc": 7.109,
+        "delta_pct_of_chord": 0.0249
+      },
+      "x=0.10": {
+        "measured_tc": 9.389,
+        "analytic_tc": 9.366,
+        "delta_pct_of_chord": 0.0231
+      },
+      "x=0.20": {
+        "measured_tc": 11.487,
+        "analytic_tc": 11.475,
+        "delta_pct_of_chord": 0.0124
+      },
+      "x=0.30": {
+        "measured_tc": 12.006,
+        "analytic_tc": 12.003,
+        "delta_pct_of_chord": 0.0027
+      },
+      "x=0.40": {
+        "measured_tc": 11.605,
+        "analytic_tc": 11.606,
+        "delta_pct_of_chord": -0.0008
+      },
+      "x=0.50": {
+        "measured_tc": 10.589,
+        "analytic_tc": 10.588,
+        "delta_pct_of_chord": 0.0005
+      },
+      "x=0.70": {
+        "measured_tc": 7.332,
+        "analytic_tc": 7.328,
+        "delta_pct_of_chord": 0.0037
+      },
+      "x=0.90": {
+        "measured_tc": 2.9,
+        "analytic_tc": 2.895,
+        "delta_pct_of_chord": 0.0045
+      }
+    }
+  },
+  "tail": {
+    "name": "NACA 0010 tail root",
+    "path": "NACA_0010_Tail_Root_190mm.dxf",
+    "n_vertices": 302,
+    "closure_gap_mm": 0.399,
+    "measured_chord_mm": 190.0,
+    "design_chord_mm": 190.0,
+    "max_thickness_pct_chord": 10.002,
+    "max_thickness_location_xc": 0.2967,
+    "design_thickness_pct_chord": 10.0,
+    "max_camber_pct_chord": 0.0,
+    "design_camber_pct_chord": 0.0,
+    "te_gap_pct_chord": 0.2334,
+    "enclosed_area_ratio_to_chord2": 0.0685,
+    "spot_thickness": {
+      "x=0.05": {
+        "measured_tc": 5.923,
+        "analytic_tc": 5.924,
+        "delta_pct_of_chord": -0.0019
+      },
+      "x=0.10": {
+        "measured_tc": 7.803,
+        "analytic_tc": 7.805,
+        "delta_pct_of_chord": -0.0011
+      },
+      "x=0.20": {
+        "measured_tc": 9.562,
+        "analytic_tc": 9.563,
+        "delta_pct_of_chord": -0.0009
+      },
+      "x=0.30": {
+        "measured_tc": 10.002,
+        "analytic_tc": 10.003,
+        "delta_pct_of_chord": -0.0008
+      },
+      "x=0.40": {
+        "measured_tc": 9.671,
+        "analytic_tc": 9.672,
+        "delta_pct_of_chord": -0.0006
+      },
+      "x=0.50": {
+        "measured_tc": 8.823,
+        "analytic_tc": 8.823,
+        "delta_pct_of_chord": 0.0
+      },
+      "x=0.70": {
+        "measured_tc": 6.106,
+        "analytic_tc": 6.107,
+        "delta_pct_of_chord": -0.0002
+      },
+      "x=0.90": {
+        "measured_tc": 2.413,
+        "analytic_tc": 2.413,
+        "delta_pct_of_chord": -0.0001
+      }
+    }
+  }
+}

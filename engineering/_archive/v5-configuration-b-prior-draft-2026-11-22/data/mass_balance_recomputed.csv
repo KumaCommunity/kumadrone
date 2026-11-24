@@ -1,0 +1,5 @@
+case,equipment_g,total_mass_g,cg_x_mm,cg_pct_MAC,wing_loading_g_dm2,stall_m_s_CLmax1
+empty_0g,0,1307.94,560.02,29.85,57.49,9.59
+light_100g,100,1407.94,559.74,29.69,61.89,9.95
+medium_250g,250,1557.94,559.38,29.48,68.48,10.47
+max_500g,500,1807.94,558.91,29.22,79.47,11.28

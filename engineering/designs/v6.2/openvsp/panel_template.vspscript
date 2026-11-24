@@ -1,0 +1,67 @@
+void main(){
+ ClearVSPModel();
+ string wing=AddGeom("WING",""); SetGeomName(wing,"wing");
+ SetParmVal(wing,"Sym_Planar_Flag","Sym",SYM_XZ);
+ SetParmVal(wing,"X_Rel_Location","XForm",0.496);
+ SetParmVal(wing,"Z_Rel_Location","XForm",0.056);
+ SetDriverGroup(wing,1,SPAN_WSECT_DRIVER,ROOTC_WSECT_DRIVER,TIPC_WSECT_DRIVER);
+ SetParmVal(wing,"Root_Chord","XSec_1",0.200);
+ SetParmVal(wing,"Tip_Chord","XSec_1",0.150);
+ SetParmVal(wing,"Span","XSec_1",0.650);
+ SetParmVal(wing,"Sweep","XSec_1",2.115);
+ SetParmVal(wing,"Dihedral","XSec_1",7.0);
+ string surf = GetXSecSurf(wing, 0);
+ for (int i=0; i<GetNumXSec(surf); ++i) {
+   string sec = GetXSec(surf,i);
+   SetParmVal(GetXSecParm(sec,"Camber"),0.02);
+   SetParmVal(GetXSecParm(sec,"CamberLoc"),0.4);
+   SetParmVal(GetXSecParm(sec,"ThickChord"),0.12);
+ }
+ string tail=AddGeom("WING",""); SetGeomName(tail,"vtail");
+ SetParmVal(tail,"Sym_Planar_Flag","Sym",SYM_XZ);
+ SetParmVal(tail,"X_Rel_Location","XForm",0.770);
+ SetParmVal(tail,"Y_Rel_Location","XForm",0.012);
+ SetParmVal(tail,"Z_Rel_Location","XForm",0.026);
+ SetDriverGroup(tail,1,SPAN_WSECT_DRIVER,ROOTC_WSECT_DRIVER,TIPC_WSECT_DRIVER);
+ SetParmVal(tail,"Root_Chord","XSec_1",0.2);
+ SetParmVal(tail,"Tip_Chord","XSec_1",0.15);
+ SetParmVal(tail,"Span","XSec_1",0.3);
+ SetParmVal(tail,"Sweep","XSec_1",4.289);
+ SetParmVal(tail,"Dihedral","XSec_1",47);
+ string pod=AddGeom("POD","");
+ SetParmVal(pod,"Length","Design",0.970);
+ SetParmVal(pod,"FineRatio","Design",11.55);
+
+@@FIN@@
+ Update();
+ WriteVSPFile("V6_run.vsp3",SET_ALL);
+ string cg="VSPAEROComputeGeometry"; SetAnalysisInputDefaults(cg);
+ array<int> th; th.push_back(SET_TYPE::SET_ALL); SetIntAnalysisInput(cg,"GeomSet",th,0);
+ array<int> ti; ti.push_back(SET_TYPE::SET_NONE); SetIntAnalysisInput(cg,"ThinGeomSet",ti,0);
+ string cgr=ExecAnalysis(cg);
+ string an="VSPAEROSweep"; SetAnalysisInputDefaults(an);
+ array<int> gs; gs.push_back(0); SetIntAnalysisInput(an,"GeomSet",gs,0);
+ array<int> rf; rf.push_back(0); SetIntAnalysisInput(an,"RefFlag",rf,0);
+ array<string> wid; wid.push_back(wing); SetStringAnalysisInput(an,"WingID",wid,0);
+ array<double> d(1,0.0);
+ d[0]=0.2275; SetDoubleAnalysisInput(an,"Sref",d,0);
+ d[0]=1.300; SetDoubleAnalysisInput(an,"bref",d,0);
+ d[0]=0.17619; SetDoubleAnalysisInput(an,"cref",d,0);
+ d[0]=0.560; SetDoubleAnalysisInput(an,"Xcg",d,0);
+ d[0]=0.0; SetDoubleAnalysisInput(an,"Ycg",d,0);
+ d[0]=0.0; SetDoubleAnalysisInput(an,"Zcg",d,0);
+ d[0]=@@ALPHA_START@@; SetDoubleAnalysisInput(an,"AlphaStart",d,0);
+ d[0]=@@ALPHA_END@@; SetDoubleAnalysisInput(an,"AlphaEnd",d,0);
+ d[0]=@@BETA_START@@; SetDoubleAnalysisInput(an,"BetaStart",d,0);
+ d[0]=@@BETA_END@@; SetDoubleAnalysisInput(an,"BetaEnd",d,0);
+ d[0]=0.035; SetDoubleAnalysisInput(an,"MachStart",d,0);
+ d[0]=0.035; SetDoubleAnalysisInput(an,"MachEnd",d,0);
+ d[0]=1.4e5; SetDoubleAnalysisInput(an,"ReCref",d,0);
+ d[0]=12.0; SetDoubleAnalysisInput(an,"Vinf",d,0);
+ array<int> n(1,@@ALPHA_N@@); SetIntAnalysisInput(an,"AlphaNpts",n,0);
+ n[0]=@@BETA_N@@; SetIntAnalysisInput(an,"BetaNpts",n,0);
+ n[0]=1; SetIntAnalysisInput(an,"MachNpts",n,0);
+ string rid=ExecAnalysis(an);
+ while(GetNumTotalErrors()>0){ ErrorObj e=PopLastError(); Print(e.GetErrorString()); }
+ Print("done");
+}

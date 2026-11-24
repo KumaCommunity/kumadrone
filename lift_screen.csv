@@ -1,0 +1,9 @@
+case,airspeed_m_s,CL_required,Re_MAC,lift_required_N
+baseline,10,0.92,119245,12.83
+baseline,12,0.639,143094,12.83
+baseline,14,0.47,166943,12.83
+baseline,16,0.36,190792,12.83
+optional_500g,10,1.272,119245,17.73
+optional_500g,12,0.884,143094,17.73
+optional_500g,14,0.649,166943,17.73
+optional_500g,16,0.497,190792,17.73

@@ -1,0 +1,9 @@
+case,equipment_added_g,total_mass_g,cg_x_mm,cg_pct_MAC,wing_loading_g_dm2,wing_loading_kg_m2,stall_m_s_CLmax_0.9,stall_m_s_CLmax_1.0,stall_m_s_CLmax_1.1,stall_m_s_CLmax_1.2,notes
+Empty,0,1307.94,560.02,29.9,57.5,5.75,10.11,9.59,9.15,8.76,printed CAD-volume LW 520.5g + PETG 310.4g + purchased 477g
+Light,100,1407.94,559.74,29.7,61.9,6.19,10.49,9.95,9.48,9.08,equipment centered x=556
+Medium,250,1557.94,559.38,29.5,68.5,6.85,10.99,10.47,9.98,9.56,equipment centered x=556
+Max500,500,1807.94,558.91,29.2,79.5,7.95,11.89,11.28,10.76,10.30,equipment centered x=556; 254cm3 envelope -> ~2.0 g/cm3 packing required
+# Category summary (mass, g): LW-PLA printed 520.55; PETG printed 310.38; purchased placeholders 477.0
+# Printed value = CAD solid volume x assumed density: LW-PLA 0.35 g/cm3 (foamed), PETG 1.27 g/cm3
+# Uncertainty: LW-PLA effective density 0.25-0.55 g/cm3 shifts empty CG to ~550-566 mm (see sensitivity.csv)
+

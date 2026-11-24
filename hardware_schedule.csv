@@ -1,0 +1,9 @@
+Interface,Nominal hardware,Nominal geometry,Count note,Status
+Fuselage joints,M3 screws with PETG sleeves,3.5 mm clear / 4.0 mm pilot / 6.8 mm depth,20 illustrative seam positions,Insert and bending test required
+Wing segment keys,M3 screw in PETG keyed inserts,3.5 mm clearance / 4.0 mm pilot / 6.8 mm depth,6 wing keys (12 screw bores),May print as disconnected shells; spar continuity not proven
+Wing center saddle,M4 screws,4.5 mm clear / 5.7 mm pilot / 9.2 mm depth,4 illustrative locations,Mating load path incomplete
+V-tail saddle,M3 screws and PETG shoes,3.5 mm clearance / 4.0 mm pilot / 6.8 mm depth,4 illustrative locations,Control linkages and root integrity unverified
+Battery rail,M3 screws,3.5 mm clearance,4 illustrative bores,Actual battery restraint missing
+Equipment tray,M3 screws,3.5 mm clearance,4 illustrative bores,Structural restraint missing
+Nose camera plate,M2 fasteners,2.1 mm clearance,4 bracket-pattern prototypes,Verify actual camera bracket
+Dorsal fairing,M3 screws,3.5 mm clearance,4 prototype bores,Matching bosses not developed

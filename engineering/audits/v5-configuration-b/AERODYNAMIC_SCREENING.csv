@@ -1,0 +1,15 @@
+airspeed_m_s,dynamic_pressure_Pa,Re_MAC,CL_req_empty_1307.9g,CL_req_loaded500_1807.9g,lift_empty_N,lift_loaded_N,note
+8,39.2,95396,1.438,1.988,12.83,17.73,Below likely CLmax (esp. loaded): cannot sustain level flight
+9,49.6,107320,1.136,1.571,12.83,17.73,
+10,61.3,119245,0.921,1.272,12.83,17.73,Doc reference point (Re~119k)
+11,74.1,131169,0.761,1.052,12.83,17.73,
+12,88.2,143094,0.639,0.884,12.83,17.73,Doc reference point (Re~143k)
+13,103.5,155018,0.545,0.753,12.83,17.73,
+14,120.1,166943,0.470,0.649,12.83,17.73,Doc reference point (Re~167k)
+16,156.8,190792,0.360,0.497,12.83,17.73,Doc reference point (Re~191k)
+18,198.5,214641,0.284,0.393,12.83,17.73,
+# NOTE: Re = rho*V*MAC/nu with nu=1.81e-5 m^2/s (sea level). CL_req = 2W/(rho V^2 S). S=0.2275 m^2.
+# Stall speed (m/s) vs CLmax: empty 10.11/9.59/9.15/8.76 ; +500g 11.89/11.28/10.76/10.30  (CLmax 0.9/1.0/1.1/1.2)
+# Drag/glide (analytical polar CD0=0.038, e=0.85): best L/D ~11.4 empty @10.5 m/s, ~11.4 loaded @12.0 m/s (UNVALIDATED)
+# Wing loading: empty 57.5 g/dm2 (5.75 kg/m2); +500g 79.5 g/dm2 (7.95 kg/m2)
+# Aspect ratio 7.43; induced-drag factor dCDi/dCL^2 = 1/(pi*AR*e) = 0.0505 (e=0.85)

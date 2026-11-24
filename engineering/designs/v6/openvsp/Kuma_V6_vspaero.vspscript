@@ -1,0 +1,92 @@
+// ============================================================================
+// KUMA FPV V5 CONFIG B -- OpenVSP geometry for VSPAERO stability analysis
+// Audit addendum (22 Nov 2026).  UNITS: METERS.
+// This is a SIMPLIFIED aero model, NOT the printable geometry.
+//
+// Corrections vs the supplied Kuma_FPV_V5_Configuration_B_OpenVSP.vspscript:
+//   * Fuselage FineRatio fixed: supplied 23.095 -> 42 mm dia (WRONG).
+//     Correct: length/dia = 0.970 / 0.084 = 11.55 (84 mm max dia).
+//   * Reference values, CG/moment reference, and VSPAERO run notes added below.
+//
+// Run:  OpenVSP > File > Run Script...  (or paste into the Scripting console)
+//       then Analysis > VSPAERO > set params (see openvsp/README.md) > Analyze.
+//
+// Key reference numbers (must match the CAD/audit):
+//   Sref = 0.2275 m^2, bref = 1.300 m, cref = 0.17619 m
+//   Moment reference (Xcg) = 0.560 m from nose (empty CG); try 0.552-0.564 too.
+//   Geometry x origin is the NOSE (x=0), x positive aft.
+// ============================================================================
+
+void SetFoil( string geomid, double camber, double camberloc, double tc )
+{
+    string surf = GetXSecSurf( geomid, 0 );
+    ChangeXSecShape( surf, 0, XS_FOUR_SERIES );
+    ChangeXSecShape( surf, 1, XS_FOUR_SERIES );
+    Update();
+    for ( int i = 0; i < 2; i++ )
+    {
+        string xsec = GetXSec( surf, i );
+        SetParmVal( GetXSecParm( xsec, "Camber" ), camber );
+        SetParmVal( GetXSecParm( xsec, "CamberLoc" ), camberloc );
+        SetParmVal( GetXSecParm( xsec, "ThickChord" ), tc );
+    }
+}
+
+void main()
+{
+    ClearVSPModel();
+
+    // ---- MAIN WING: NACA 2412, span 1.30 m, root 0.200 / tip 0.150, 7 deg ----
+    string main = AddGeom( "WING", "" );
+    SetGeomName( main, "KUMA V6 WING - NACA 2412" );
+    SetParmVal( main, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( main, "X_Rel_Location", "XForm", 0.496 );
+    SetParmVal( main, "Y_Rel_Location", "XForm", 0.0 );
+    SetParmVal( main, "Z_Rel_Location", "XForm", 0.056 );
+    SetDriverGroup( main, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( main, "Root_Chord", "XSec_1", 0.200 );
+    SetParmVal( main, "Tip_Chord", "XSec_1", 0.150 );
+    SetParmVal( main, "Span", "XSec_1", 0.650 );
+    SetParmVal( main, "Sweep", "XSec_1", 2.115 );
+    SetParmVal( main, "Dihedral", "XSec_1", 7.0 );
+    Update();
+    SetFoil( main, 0.02, 0.40, 0.12 );
+    Update();
+
+    // ---- UPRIGHT V-TAIL: NACA 0010, 40 deg each, root 0.190 / tip 0.140 ----
+    string tail = AddGeom( "WING", "" );
+    SetGeomName( tail, "KUMA V6 UPRIGHT V TAIL - NACA 0010" );
+    SetParmVal( tail, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( tail, "X_Rel_Location", "XForm", 0.770 );
+    SetParmVal( tail, "Y_Rel_Location", "XForm", 0.012 );
+    SetParmVal( tail, "Z_Rel_Location", "XForm", 0.026 );
+    SetDriverGroup( tail, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( tail, "Root_Chord", "XSec_1", 0.200 );
+    SetParmVal( tail, "Tip_Chord", "XSec_1", 0.150 );
+    SetParmVal( tail, "Span", "XSec_1", 0.270 );
+    SetParmVal( tail, "Sweep", "XSec_1", 4.289 );
+    SetParmVal( tail, "Dihedral", "XSec_1", 45.0 );
+    Update();
+    SetFoil( tail, 0.0, 0.40, 0.10 );
+    Update();
+
+    // ---- FUSELAGE POD: length 0.970 m, max dia 0.084 m (FineRatio 11.55) ----
+    string fuse = AddGeom( "POD", "" );
+    SetGeomName( fuse, "V5B FUSELAGE - 970 x 84 mm" );
+    SetParmVal( fuse, "Length", "Design", 0.970 );
+    SetParmVal( fuse, "FineRatio", "Design", 11.55 );   // <-- corrected
+    SetParmVal( fuse, "X_Rel_Location", "XForm", 0.0 );
+    Update();
+
+    Update();
+    Print( "Kuma V5B config B geometry built. Next: set VSPAERO refs and run a" );
+    Print( "Stability or AoA/Beta sweep. See README for exact analysis settings." );
+    WriteVSPFile( "Kuma_V5B_vspaero.vsp3", SET_ALL );
+
+    while ( GetNumTotalErrors() > 0 )
+    {
+        ErrorObj e = PopLastError();
+        Print( e.GetErrorString() );
+    }
+    Print( "NOT VALIDATED: check symmetry, x-origin, and reference areas before analysis." );
+}

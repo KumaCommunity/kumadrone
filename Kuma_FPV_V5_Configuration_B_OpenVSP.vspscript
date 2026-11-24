@@ -1,0 +1,69 @@
+// KUMA FPV V5 Configuration B / aerodynamics reference only
+// Save script and run: OpenVSP > File > Run Script
+// Units: meters, geometry simplified vs printable OpenSCAD geometry.
+// This script has not been executed against OpenVSP in the current environment.
+// This is NOT a validated aero model: 7 deg wing dihedral, no ailerons.
+void SetFoil( string geomid, double camber, double camberloc, double tc )
+{
+    string surf = GetXSecSurf( geomid, 0 );
+    ChangeXSecShape( surf, 0, XS_FOUR_SERIES );
+    ChangeXSecShape( surf, 1, XS_FOUR_SERIES );
+    Update();
+    for ( int i = 0; i < 2; i++ )
+    {
+        string xsec = GetXSec( surf, i );
+        SetParmVal( GetXSecParm( xsec, "Camber" ), camber );
+        SetParmVal( GetXSecParm( xsec, "CamberLoc" ), camberloc );
+        SetParmVal( GetXSecParm( xsec, "ThickChord" ), tc );
+    }
+}
+void main()
+{
+    ClearVSPModel();
+    string main = AddGeom( "WING", "" );
+    SetGeomName( main, "KUMA V5B WING - NACA 2412" );
+    SetParmVal( main, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( main, "X_Rel_Location", "XForm", 0.496 );
+    SetParmVal( main, "Y_Rel_Location", "XForm", 0.0 );
+    SetParmVal( main, "Z_Rel_Location", "XForm", 0.056 );
+    SetDriverGroup( main, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( main, "Root_Chord", "XSec_1", 0.200 );
+    SetParmVal( main, "Tip_Chord", "XSec_1", 0.150 );
+    SetParmVal( main, "Span", "XSec_1", 0.650 );
+    SetParmVal( main, "Sweep_Location", "XSec_1", 0.0 );
+    SetParmVal( main, "Sweep", "XSec_1", 2.115 );
+    SetParmVal( main, "Dihedral", "XSec_1", 7.0 );
+    Update();
+    SetFoil( main, 0.02, 0.40, 0.12 );
+    Update();
+    string tail = AddGeom( "WING", "" );
+    SetGeomName( tail, "KUMA V5B UPRIGHT V TAIL - NACA 0010" );
+    SetParmVal( tail, "Sym_Planar_Flag", "Sym", SYM_XZ );
+    SetParmVal( tail, "X_Rel_Location", "XForm", 0.770 );
+    SetParmVal( tail, "Y_Rel_Location", "XForm", 0.012 );
+    SetParmVal( tail, "Z_Rel_Location", "XForm", 0.026 );
+    SetDriverGroup( tail, 1, SPAN_WSECT_DRIVER, ROOTC_WSECT_DRIVER, TIPC_WSECT_DRIVER );
+    SetParmVal( tail, "Root_Chord", "XSec_1", 0.190 );
+    SetParmVal( tail, "Tip_Chord", "XSec_1", 0.140 );
+    SetParmVal( tail, "Span", "XSec_1", 0.240 );
+    SetParmVal( tail, "Sweep_Location", "XSec_1", 0.0 );
+    SetParmVal( tail, "Sweep", "XSec_1", 4.289 );
+    SetParmVal( tail, "Dihedral", "XSec_1", 40.0 );
+    Update();
+    SetFoil( tail, 0.0, 0.40, 0.10 );
+    Update();
+    string fuse = AddGeom( "POD", "" );
+    SetGeomName( fuse, "V5B SIMPLE FUSELAGE - 970 x 84 mm" );
+    SetParmVal( fuse, "Length", "Design", 0.970 );
+    SetParmVal( fuse, "FineRatio", "Design", 23.095 );
+    SetParmVal( fuse, "X_Rel_Location", "XForm", 0.0 );
+    Update();
+    Print( "Kuma FPV V5 Configuration B: exporting simplified aero reference" );
+    WriteVSPFile( "Kuma_FPV_V5_Configuration_B_Aero.vsp3", SET_ALL );
+    while ( GetNumTotalErrors() > 0 )
+    {
+        ErrorObj e = PopLastError();
+        Print( e.GetErrorString() );
+    }
+    Print( "NOT VALIDATED: run symmetry, coordinate and stability checks before using analysis" );
+}

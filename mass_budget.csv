@@ -1,0 +1,43 @@
+item,source,category,quantity,unit_mass_g,total_mass_g,x_mm,status
+fuselage_0,CAD volume screen,LW-PLA,1,15.08,15.08,104.0,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+fuselage_1,CAD volume screen,LW-PLA,1,20.02,20.02,270.67,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+fuselage_2,CAD volume screen,LW-PLA,1,19.7,19.7,448.83,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+fuselage_3,CAD volume screen,LW-PLA,1,16.54,16.54,626.35,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+fuselage_4,CAD volume screen,LW-PLA,1,12.14,12.14,804.41,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+fuselage_5,CAD volume screen,LW-PLA,1,3.62,3.62,934.13,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+coupler_0,CAD volume screen,PETG,1,23.02,23.02,180.02,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+coupler_1,CAD volume screen,PETG,1,23.85,23.85,359.99,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+coupler_2,CAD volume screen,PETG,1,21.93,21.93,539.93,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+coupler_3,CAD volume screen,PETG,1,17.51,17.51,719.89,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+coupler_4,CAD volume screen,PETG,1,12.7,12.7,899.88,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_center,CAD volume screen,LW-PLA,1,43.47,43.47,581.4,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_L1,CAD volume screen,LW-PLA,1,63.65,63.65,578.98,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_L2,CAD volume screen,LW-PLA,1,52.48,52.48,580.09,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_L3,CAD volume screen,LW-PLA,1,42.27,42.27,581.2,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_R1,CAD volume screen,LW-PLA,1,63.65,63.65,578.98,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_R2,CAD volume screen,LW-PLA,1,52.48,52.48,580.09,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_R3,CAD volume screen,LW-PLA,1,42.27,42.27,581.2,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+wing_key,CAD volume screen,PETG,6,6.19,37.14,599.1,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+saddle_plate,CAD volume screen,PETG,1,43.02,43.02,591.16,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+tail_L,CAD volume screen,LW-PLA,1,26.89,26.89,841.64,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+tail_R,CAD volume screen,LW-PLA,1,26.89,26.89,841.64,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+ruddervator_L,CAD volume screen,LW-PLA,1,4.25,4.25,918.01,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+ruddervator_R,CAD volume screen,LW-PLA,1,4.25,4.25,918.01,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+tail_saddle,CAD volume screen,PETG,1,37.38,37.38,819.58,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+tail_shoe_L,CAD volume screen,PETG,1,20.37,20.37,819.99,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+tail_shoe_R,CAD volume screen,PETG,1,20.37,20.37,819.99,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+camera_plate,CAD volume screen,PETG,1,9.02,9.02,38.0,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+battery_tray,CAD volume screen,PETG,1,27.15,27.15,410.0,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+forward_equipment_tray,CAD volume screen,PETG,1,16.95,16.95,556.0,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+dorsal_fairing,CAD volume screen,LW-PLA,1,10.88,10.88,501.8,"Estimated density, watertight mesh; geometry may contain disconnected shells"
+Example 3S 2200 mAh LiPo,V5 example assumptions,Unselected equipment,1,185,185,410,unselected example; actual mass and size unknown
+Brushless motor and prop,V5 example assumptions,Unselected equipment,1,65,65,970,unselected example
+ESC,V5 example assumptions,Unselected equipment,1,28,28,400,unselected example
+Receiver,V5 example assumptions,Unselected equipment,1,10,10,290,unselected example
+Nano analog FPV camera,V5 example assumptions,Unselected equipment,1,2,2,38,listing reports about 2g
+VTX and antenna,V5 example assumptions,Unselected equipment,1,23,23,130,unselected example
+V-tail micro servos (2),V5 example assumptions,Unselected equipment,1,20,20,350,unselected example; linkage lengths not specified
+Power and signal wiring,V5 example assumptions,Unselected equipment,1,25,25,460,unselected example
+Primary and aft spar stock,V5 example assumptions,Unselected equipment,1,65,65,580,unselected example; spar structural design open
+Metric fasteners / inserts,V5 example assumptions,Unselected equipment,1,44,44,530,unselected example
+Tail hinges and control horns,V5 example assumptions,Unselected equipment,1,10,10,880,unselected example; no sizing validated

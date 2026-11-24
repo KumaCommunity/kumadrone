@@ -1,0 +1,54 @@
+item,mass_g,x_mm,category
+fuselage_0,15.08,104.0,LW-PLA
+fuselage_1,20.02,270.67,LW-PLA
+fuselage_2,19.7,448.83,LW-PLA
+fuselage_3,16.54,626.35,LW-PLA
+fuselage_4,12.14,804.41,LW-PLA
+fuselage_5,3.62,934.13,LW-PLA
+coupler_0,23.02,180.02,PETG
+coupler_1,23.85,359.99,PETG
+coupler_2,21.93,539.93,PETG
+coupler_3,17.51,719.89,PETG
+coupler_4,12.7,899.88,PETG
+wing_center,43.47,581.4,LW-PLA
+wing_L1,63.65,578.98,LW-PLA
+wing_L2,52.48,580.09,LW-PLA
+wing_L3,42.27,581.2,LW-PLA
+wing_R1,63.65,578.98,LW-PLA
+wing_R2,52.48,580.09,LW-PLA
+wing_R3,42.27,581.2,LW-PLA
+wing_key,37.14,599.1,PETG
+saddle_plate,43.02,591.16,PETG
+tail_L,35.65,841.64,LW-PLA
+tail_R,35.65,841.64,LW-PLA
+ruddervator_L,5.63,918.01,LW-PLA
+ruddervator_R,5.63,918.01,LW-PLA
+tail_saddle,37.38,819.58,PETG
+tail_shoe_L,20.37,819.99,PETG
+tail_shoe_R,20.37,819.99,PETG
+camera_plate,9.02,38.0,PETG
+battery_tray,27.15,410.0,PETG
+forward_equipment_tray,16.95,556.0,PETG
+dorsal_fairing,10.88,501.8,LW-PLA
+Example 3S 2200 mAh LiPo,185.0,285.0,Unselected equipment
+Brushless motor and prop,65.0,970.0,Unselected equipment
+ESC,28.0,400.0,Unselected equipment
+Receiver,10.0,290.0,Unselected equipment
+Nano analog FPV camera,2.0,38.0,Unselected equipment
+VTX and antenna,23.0,130.0,Unselected equipment
+V-tail micro servos (2),20.0,350.0,Unselected equipment
+Power and signal wiring,25.0,460.0,Unselected equipment
+Primary and aft spar stock,65.0,580.0,Unselected equipment
+Metric fasteners / inserts,44.0,530.0,Unselected equipment
+Tail hinges and control horns,10.0,880.0,Unselected equipment
+wing_saddle_clamp,22.0,590.0,V6new
+centre_spar_joiner,12.0,580.0,V6new
+wing_center_spar_sleeve,6.0,580.0,V6new
+motor_bulkhead,8.0,952.0,V6new
+camera_cradle,6.0,38.0,V6new
+battery_hatch_lid,6.0,452.0,V6new
+tail_root_spar,3.0,810.0,V6new
+ruddervator_hinges(2),6.0,918.0,V6new
+control_horns(2),2.0,915.0,V6new
+pushrod_channels(2),4.0,850.0,V6new
+secured_tray_addon,5.0,556.0,V6new

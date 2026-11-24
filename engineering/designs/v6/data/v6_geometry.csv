@@ -1,0 +1,17 @@
+quantity,value,note
+tail_span_mm,300.0,
+tail_root_chord_mm,200.0,
+tail_tip_chord_mm,150.0,
+tail_dihedral_deg,47.0,
+tail_S_total_m2,0.105,V5 0.0792
+Sh_m2,0.04884,
+Sv_m2,0.05616,
+horiz_AR,3.843,
+tail_AC_x_mm,822.62,
+tail_arm_mm,271.14,
+Vh,0.3304,V5 0.31
+Vv,0.0515,V5 0.030
+a_w_per_rad,4.428,
+a_t_per_rad,3.294,
+x_np_mm,576.27,provisional
+SM_empty_pct,14.09,

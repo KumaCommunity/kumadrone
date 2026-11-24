@@ -1,0 +1,4 @@
+battery_x_mm,estimated_mass_g,estimated_cg_mm,estimated_cg_pct_mac,wing_loading_g_dm2,stall_screen_m_s_clmax_1
+180,1620.7,546.47,22.16,71.24,10.68
+190,1620.7,547.91,22.98,71.24,10.68
+242,1620.7,555.42,27.24,71.24,10.68

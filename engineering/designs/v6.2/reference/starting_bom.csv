@@ -1,0 +1,28 @@
+when,system,component,qty,fit_and_verification,manufacturer_reference
+Bench first,Power,"SunnySky X2216 V3 1250 Kv, short shaft",1,"3–4S, 69 g, Ø27.7 × 34 mm body. Verify supplied rear adapter and drill the firewall from the actual base.",https://sunnyskyusa.com/products/sunnysky-x2216
+Bench first,Power,Hobbywing Skywalker 50A V2 • 80060442,1,"3–4S fixed-wing ESC, 5 V / 5 A switch BEC. Verify rail sag, thermal margin and phase-wire routing.",https://www.hobbywingdirect.com/products/skywalker-esc-50a
+Bench first,Power,Gens ace Air Classic 4S 2200 mAh 45C • XT60,1,"108 × 34 × 30 mm nominal, 234 g nominal. Weigh pack and mock up leads before finalizing the tray.",https://genstattu.com/gens-ace-2200mah-4s-45c-14-8v-lipo-battery-xt60-ec3-deans-air-classic/
+Bench first,Power,APC 8×4E • LP08040E,2,"One test prop plus spare. Match hub ring and rotation to aft airflow. Measure current, thrust and RPM.",https://www.apcprop.com/product/8x4e/
+Hold for test,Power,APC 8×6EP • LP08060EP,1,Alternate reverse-rotation prop. Evaluate after 8×4E results and verify fresh-pack motor limits.,https://www.apcprop.com/product/8x6ep/
+Bench first,Radio,RadioMaster ER6 • HP0157.RX-ER6,1,"2.4 GHz ELRS, 6 PWM, 4.5–8.4 V. Verify arming, throttle-off failsafe and antenna placement.",https://radiomasterrc.com/products/er6-2-4ghz-elrs-pwm-receiver
+Bench first,Radio,RadioMaster Pocket Mode 2 • internal ELRS,1,Use an existing compatible ELRS radio if available. Pocket requires two compatible 18650 cells.,https://radiomasterrc.com/products/pocket-radio-controller-m2
+Bench first,Controls,EMAX ES08MA II • normal rotation,2,Analog PWM metal-gear servo. Inspect actual mounting ears and spline before drilling the side plates.,https://shop.emaxmodel.com/products/emax-es08ma-ii-12g-mini-metal-gear-analog-servo-for-rc-model-robot-pwm-servo
+Fit first,Controls,DU-BRO Mini nylon pin hinge • 11 × 28 mm,6,"Three per surface. Test slot fit, adhesive bond and coaxial hinge pins on a tail coupon.",https://www.dubro.com/products/nylon-hinges
+Fit first,Controls,M2 threaded pushrod and captured ball links,2,One linkage per side. Set length from fitted servo and horn. Confirm external rod clearance through full mixed travel.,
+Fit first,Controls,"M2 machine screws, washers and locknuts",4,"Two per horn. Set length on the assembled horn, skin reinforcement and backing plate.",
+Fit first,Wing,Pultruded carbon tube • 8 mm OD × 6 mm ID,2,Main spars. Buy long stock and cut nominal ~618 mm blanks after checking socket depth and tip setback.,
+Fit first,Wing,Pultruded carbon tube • 4 mm OD × 2 mm ID,2,Rear spars. Buy long stock and cut nominal ~618 mm blanks after checking geometry.,
+Hold for fit,Wing,Custom 6061-T6 dihedral socket,2,One main and one rear piece. Measure tubes before setting bore allowance. Reference meshes included.,
+Fit first,Wing,"M4 screws, washers and captured nuts",4,Wing-to-upper-collar fasteners. Measure stack length and seat nuts in the side-loading pockets.,
+Fit first,Airframe,"M3 fasteners, washers and locknuts assortment",1,"Allowance for 12 collar closures, 4 tail mounts, 10 pylon/firewall/skid joints and 4 tray fasteners.",
+Fit first,Airframe,M3 × 5.7 mm heat-set inserts and matching screws,32,20 for fuselage couplers and 12 for wing keys. Verify actual insert OD and pull-out with coupon.,
+Fit first,Airframe,M2.5 fastener assortment,1,Allow 8 servo-plate and 4 hatch screws. Validate backing and nut access on fit article.,
+Hold for fit,Airframe,4 mm 6061-T6 firewall blank,1,43 × 43 mm reference. Transfer actual motor pattern and choose screws with safe engagement.,
+Fit first,Airframe,Foaming LW-PLA and PETG,1,One spool of each to start. Weigh representative prints and document slicer settings before full build.,
+Fit first,Installation,Hook-and-loop battery straps and dense foam,2,Select strap width for CAD slots. Add fore/aft stop blocks and verify pack restraint with leads attached.,
+Fit first,Installation,"XT60, phase leads, servo extensions and grommets",1,Sized harness set with strain relief. Keep battery-to-ESC short and bench-check the long phase leads.,
+Fit first,Installation,"Adhesive, shims and hardware retention supplies",1,Select for actual material pairs. Qualify bonded joints and thin non-slip collar shims on coupons.,
+Bench first,Ground gear,SkyRC B6ACneo or equivalent 4S balance charger,1,Confirm the pack's balance-port adapter and XT60 charge lead. Use an existing compatible charger if available.,https://www.skyrc.com/b6acneo
+Bench first,Ground gear,"Inline wattmeter, optical tachometer and guarded thrust stand",1,Rate the stand and equipment for the chosen propulsive system. Also measure BEC sag and temperature.,
+Later FPV,Video,RunCam Nano 4 NTSC,1,"14 mm cube, 2.9 g. Verify forward view and retention. Regulated 5 V only.",https://shop.runcam.com/runcam-nano-4-ntsc-only/
+Later FPV,Video,TBS Unify Pro32 Nano + compatible antenna,1,Analog 5.8 GHz. Use filtered regulated 5 V. Fit antenna before power and match the ground receiver.,https://www.team-blacksheep.com/media/files/tbs-unify-pro32-manual.pdf

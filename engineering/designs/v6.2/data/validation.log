@@ -1,0 +1,20 @@
+51/51 parts watertight, single-solid and within bed bounds
+Mesh exceptions: none
+battery_access_forward     0 deg     0.0000 mm³ PASS
+battery_access_aft         0 deg     0.0000 mm³ PASS
+battery_tray_pack          0 deg     0.0000 mm³ PASS
+hatch_lid_shell            0 deg     0.0000 mm³ PASS
+cooling_inlet              0 deg   305.7235 mm³ PASS
+cooling_exit               0 deg   445.0389 mm³ PASS
+servo_access               0 deg  2148.2620 mm³ PASS
+motor_wire_exit            0 deg    48.3736 mm³ PASS
+servo_case_fit             0 deg     0.0000 mm³ PASS
+linkage_wall               0 deg     0.0000 mm³ PASS
+spar_socket                0 deg     0.0000 mm³ PASS
+spar_tube                  0 deg     0.0000 mm³ PASS
+wing_collar_clearance      0 deg     0.0000 mm³ PASS
+tail_mount                 0 deg     0.0000 mm³ PASS
+horn_motion              -20 deg     0.0000 mm³ PASS
+horn_motion               20 deg     0.0000 mm³ PASS
+prop_clearance             0 deg     0.0000 mm³ PASS
+motor_mount                0 deg     0.0000 mm³ PASS

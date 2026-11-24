@@ -1,0 +1,28 @@
+id,parameter,current_value,source,classification,confidence,conclusion_sensitivity,validation_method
+A01,foaming LW-PLA effective density,0.35 g/cm3,source doc assumption,Estimated,Low-Medium,High (drives printed mass -> CG, launch),Print & weigh coupons at chosen flow; 0.25-0.55 g/cm3 bounds
+A02,PETG density,1.27 g/cm3,material datasheet,Manufacturer,High,Low,Confirmed by datasheet; coupon mass check
+A03,printed mass = CAD solid volume x density,applied per part,CAD volume + assumed density,Calculated/Estimated,Medium,High,Slice the real meshes and read slicer mass per part
+A04,primary battery mass & size,185 g / 122x38x30 mm,source example,Estimated,Low,High (dominant single mass at x=410),Weigh the actual pack; measure fit
+A05,purchased component masses (motor 65/ESC 28/RX 10/cam 2/VTX 23/servo 20/wiring 25),see mass_budget.csv,source example,Estimated,Low,High,Weigh each selected part
+A06,component longitudinal stations,see mass_budget.csv,CAD/estimate,CAD-derived/Estimated,Medium,High,Reconcile to final packaging
+A07,section & wing CLmax,1.0 (screened 0.9-1.2),assumption,Literature-derived (unverified),Low,CRITICAL (stall & launch),Low-Re (100-200k) polar: XFLR5 / wind tunnel / flight
+A08,motor thrust & prop efficiency,unknown (150 mm prop envelope only),not specified,Unknown,None,High (launch, climb, endurance),Static thrust stand test; motor/prop datasheet
+A09,neutral-point method (lift slopes, eta, downwash, cos^2 V-tail),see stability.csv,analytical estimate,Estimated,Low-Medium,High (static margin),VSPAERO/DATCOM/AVL + flight test
+A10,wing 2D section cl_alpha at Re~150k,5.7 /rad,literature/estimated,Literature-derived,Medium,Medium,Low-Re section data
+A11,downwash gradient d(eps)/d(alpha),0.10-0.40 (nominal 0.30),estimated,Estimated,Low,High (pushes x_np ~571-580 mm),VSPAERO/flow survey
+A12,tail efficiency eta_t,0.90,estimated,Estimated,Medium,Medium,Estimate from tail position/flow
+A13,parasite drag CD0,0.038,estimated build-up,Estimated,Low,Medium (glide/endurance),Drag estimate refined; flight glide test
+A14,Oswald efficiency e,0.85 wing / 0.80 tail,estimated,Estimated,Medium,Medium,Polar fit
+A15,battery station x,410 mm +-40 mm,source example,Estimated,Medium,High (CG),Final battery placement; measure CG
+A16,500 g equipment fits 138x46x40 mm (254 cm3),assumed,source doc,Unknown,Low,High (payload feasibility),Pack a representative 500 g load
+A17,500 g equipment can be structurally retained,assumed,source doc,Unknown,None,CRITICAL (requirement),Design tray/mount + static test
+A18,LW-PLA layer-adhesion / strength by orientation,unknown,not provided,Unknown,None,High (structure),Tensile/beam coupons per orientation
+A19,heat-set insert pull-out (M3/M4) in PETG & LW-PLA,unverified,pilot-hole dims only,Unknown,Low,High (joints),insert_fit_coupon pull test
+A20,dihedral-effect Cl_beta (high wing + 7 deg),0.08-0.16 /rad,estimated,Estimated,Low,High (rudder-only roll),6-DOF sim / flight test
+A21,propeller diameter,150 mm (6 in),CAD envelope only,Estimated,Low,Medium,Confirm motor/prop selection
+A22,wing/tail incidence & twist,0 deg / 0 deg,SCAD,Calculated/CAD-derived,High,Medium,Design intent confirmed
+A23,design load factor,limit +3.0 / ultimate +4.5 g,auditor assumption,Estimated,Medium,High (structure),Confirm class basis (ASTM F2245-like)
+A24,air density (sea level),1.225 kg/m3,ISA standard,Literature-derived,High,Low,Standard
+A25,main spar construction,8 mm carbon tube (assumed),matl unknown (rod drawn only),Unknown,None,High (wing bending),Specify spar material & bond; test
+A26,fuselage shell wall,1.25 mm,SCAD,Calculated/CAD-derived,High,Medium,Slicer check (>=3 perimeters)
+A27,aircraft empty mass,1307.9 g,sum of estimates,Estimated,Medium,High,Weigh printed + installed airframe

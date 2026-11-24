@@ -1,0 +1,7 @@
+configuration,samples,x_np_mm,cmz_beta_per_rad
+base_alpha,7,555.35,
+fin_alpha,7,554.86,
+base_beta2,5,,0.01276
+base_beta6,5,,0.03365
+fin_beta2,5,,0.00603
+fin_beta6,5,,0.02649

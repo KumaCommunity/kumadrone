@@ -1,0 +1,142 @@
+solid OpenSCAD_Model
+  facet normal 0 -1 0
+    outer loop
+      vertex 850 -1.1 -95
+      vertex 772 -1.1 -18
+      vertex 790 -1.1 -95
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 790 1.1 -95
+      vertex 850 -1.1 -95
+      vertex 790 -1.1 -95
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 790 -1.1 -95
+      vertex 772 -1.1 -18
+      vertex 772 -1.1 -20
+    endloop
+  endfacet
+  facet normal -0.9723873019805176 0 -0.23337295247532422
+    outer loop
+      vertex 772 1.1 -20
+      vertex 790 -1.1 -95
+      vertex 772 -1.1 -20
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 772 -1.1 -18
+      vertex 772 1.1 -20
+      vertex 772 -1.1 -20
+    endloop
+  endfacet
+  facet normal -0.9723873019805176 0 -0.23337295247532422
+    outer loop
+      vertex 790 1.1 -95
+      vertex 790 -1.1 -95
+      vertex 772 1.1 -20
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 850 -1.1 -95
+      vertex 790 1.1 -95
+      vertex 850 1.1 -95
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 772 -1.1 -18
+      vertex 772 1.1 -18
+      vertex 772 1.1 -20
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 790 1.1 -95
+      vertex 772 1.1 -20
+      vertex 772 1.1 -18
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 772 -1.1 -18
+      vertex 892 1.1 -18
+      vertex 772 1.1 -18
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 892 1.1 -18
+      vertex 790 1.1 -95
+      vertex 772 1.1 -18
+    endloop
+  endfacet
+  facet normal 0.87250601594972 0 -0.48860336893184325
+    outer loop
+      vertex 850 -1.1 -95
+      vertex 850 1.1 -95
+      vertex 892 -1.1 -20
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 892 -1.1 -18
+      vertex 772 -1.1 -18
+      vertex 850 -1.1 -95
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 772 -1.1 -18
+      vertex 892 -1.1 -18
+      vertex 892 1.1 -18
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 892 -1.1 -18
+      vertex 850 -1.1 -95
+      vertex 892 -1.1 -20
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 892 1.1 -18
+      vertex 892 -1.1 -18
+      vertex 892 -1.1 -20
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 790 1.1 -95
+      vertex 892 1.1 -18
+      vertex 850 1.1 -95
+    endloop
+  endfacet
+  facet normal 0.87250601594972 0 -0.48860336893184325
+    outer loop
+      vertex 892 -1.1 -20
+      vertex 850 1.1 -95
+      vertex 892 1.1 -20
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 892 1.1 -18
+      vertex 892 -1.1 -20
+      vertex 892 1.1 -20
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 850 1.1 -95
+      vertex 892 1.1 -18
+      vertex 892 1.1 -20
+    endloop
+  endfacet
+endsolid OpenSCAD_Model
