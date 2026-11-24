@@ -45,8 +45,8 @@ def run_scad(command, source, destination, definitions):
     return subprocess.run(args + [str(source)], capture_output=True, text=True, check=False)
 
 
-def export_part(command, part):
-    destination = ROOT / "STL" / f"{part}.stl"
+def export_part(command, part, output_root):
+    destination = output_root / "STL" / f"{part}.stl"
     with tempfile.TemporaryDirectory() as temporary:
         output = Path(temporary) / "part.stl"
         run = run_scad(command, SOURCE, output, [f'part="{part}"'])
@@ -83,8 +83,8 @@ def check_probe(command, probe):
             "pass": volume > 1 if expect_cut else volume < 0.1}
 
 
-def write_csv(name, rows):
-    with (ROOT / "data" / name).open("w", newline="") as output:
+def write_csv(output_root, name, rows):
+    with (output_root / "data" / name).open("w", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=rows[0])
         writer.writeheader()
         writer.writerows(rows)
@@ -93,15 +93,16 @@ def write_csv(name, rows):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--openscad", default="openscad", help="OpenSCAD command and optional prefix")
+    parser.add_argument("--output", type=Path, default=ROOT, help="Directory for STL and data outputs")
     args = parser.parse_args()
     command = shlex.split(args.openscad)
-    (ROOT / "STL").mkdir(exist_ok=True)
-    (ROOT / "data").mkdir(exist_ok=True)
+    (args.output / "STL").mkdir(parents=True, exist_ok=True)
+    (args.output / "data").mkdir(parents=True, exist_ok=True)
     with ThreadPoolExecutor(max_workers=4) as executor:
-        results = list(executor.map(lambda part: export_part(command, part), PARTS))
+        results = list(executor.map(lambda part: export_part(command, part, args.output), PARTS))
         probes = list(executor.map(lambda probe: check_probe(command, probe), PROBES))
-    write_csv("mesh_verification.csv", results)
-    write_csv("fit_verification.csv", probes)
+    write_csv(args.output, "mesh_verification.csv", results)
+    write_csv(args.output, "fit_verification.csv", probes)
     bad = [row["part"] for row in results if not (
         row["watertight"] and row["solid_components"] == 1 and row["fits_220x220x250"])]
     print(f"{len(results)-len(bad)}/{len(results)} parts watertight, single-solid and within bed bounds")

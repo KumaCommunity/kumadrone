@@ -1,30 +1,53 @@
-# Kuma FPV V5 — Configuration B CAD / presentation package
+# KumaDrone
 
-This package is a **civilian educational RC airplane CAD study, not a flight-ready design**.
+```text
+                          *       .       *
+                  __..---[ K U M A D R O N E ]---..__
+        _____..--'                  |                  '--.._____
+        \______________________..--(_)--..______________________/
+                                  /   \
+                                 /_____\       vrrrrr
+                                    |        ))
+```
 
-## Contents
+KumaDrone is a 3D-printed recreational RC airplane with a 1.30 m fixed wing, a V-tail and a rear pusher propeller. It's being developed as a line-of-sight bench prototype with optional FPV equipment.
 
-- `Kuma_FPV_V5_Configuration_B.scad`: editable parametric OpenSCAD design.
-- `STL/`: 32 exported individual part meshes (one is a *test coupon*; the wing key is printed in multiple copies).
-- `CAD_Views/`: orthographic and exploded views directly rendered from CAD.
-- `Kuma_FPV_V5_Configuration_B_OpenVSP.vspscript`: simplified native OpenVSP geometry generator; unexecuted/unverified in this environment.
-- `NACA_2412_Wing_Root_200mm.dxf` / `NACA_0010_Tail_Root_190mm.dxf`: 2D airfoil outlines for CAD interchange.
-- `Kuma_FPV_V5_ConfigB_CAD_Review.png`: CAD-derived technical poster.
-- `Kuma_FPV_V5_ConfigB_Stylized_Infographic.png`: artistic presentation illustration, not a measurement reference.
-- `Kuma_FPV_V5_Configuration_B_Engineering_Review.md`: calculations, assumptions, unresolved items.
-- `geometry_mass_screen.csv`, `mass_budget.csv`, `loading_scenarios.csv`, `lift_screen.csv`, `sensitivity.csv`, `hardware_schedule.csv`, `metrics.json`: supporting engineering screens.
+**Current revision: V6.2.** The recorded CAD run produced 51 watertight single-solid parts and passed 18 fit checks. The prototype still needs physical fit, structural testing, measured balance, control and propulsion checks before a maiden flight.
 
-## OpenSCAD workflow
+## Start here
 
-1. Open the `.scad` file and inspect `part="assembly"` or `part="exploded"`.
-2. For individual model preview, change `part` to `fuselage_0`, `wing_R1`, `ruddervator_L`, `wing_key`, etc.
-3. Confirm the printed insert hole dimensions using `part="insert_fit_coupon"`.
-4. Do **not** treat exported meshes as structurally qualified: some STL files contain multiple closed disconnected components; check fit, load paths and slicer output.
+| If you want to… | Open |
+| --- | --- |
+| See what changed and how the parts fit | [V6.2 design notes](engineering/designs/v6.2/README.md) |
+| Open the model in OpenSCAD | [V6.2 source](engineering/designs/v6.2/Kuma_FPV_V6_2_Configuration_B.scad) |
+| Find the meshes and material assignments | [STLs](engineering/designs/v6.2/STL/) and [mesh report](engineering/designs/v6.2/data/mesh_verification.csv) |
+| Start a parts list or wire up a bench setup | [Starting BOM](engineering/designs/v6.2/reference/starting_bom.csv) and [wiring and bench plan](engineering/designs/v6.2/WIRING_AND_BENCH.md) |
+| Inspect the engineering results | [CAD checks](engineering/designs/v6.2/data/fit_verification.csv), [mass and balance](engineering/designs/v6.2/data/mass_balance.csv) and [aero screen](engineering/designs/v6.2/data/vspaero_screen.csv) |
 
-V5 Configuration B is a **fixed wing**; the SCAD `payload_mass_g` switch only displays an illustrative equipment envelope, not a sliding wing station or validated mass capacity. The 500 g case assumes retained mass centered near x=556 mm rather than directly behind the camera.
+For a first fit article, print the insert coupon, one collar pair, one servo plate and a representative hinge station before committing to the full airframe. The mesh report identifies the aluminum reference parts and their quantities.
 
-## Export caveats
+## Run the checks
 
-- No `.step` was exported: full native parametric STEP conversion from OpenSCAD is not verified in this environment.
-- No new `.vsp3` was exported: the available earlier OpenVSP file describes prior V4/V5 geometry and must not be represented as this revision. Run the included `.vspscript` in OpenVSP to generate a provisional native model. The script was not executed or VSPAERO-validated here.
-- CAD render and mass math were performed locally; aerodynamic and structural simulations were **not**.
+Create a Python environment and install the dependencies. Install OpenSCAD with the Manifold backend for CAD checks. OpenVSP is only needed for the aerodynamic screen.
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+make check
+```
+
+`make check` writes fresh meshes, fit results and mass calculations to `build/v6.2/`. On Apple Silicon, if the native OpenSCAD build fails with a Qt or NEON error, run the Intel binary through Rosetta if installed:
+
+```sh
+make check V62_OPENSCAD='/usr/bin/arch -x86_64 /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD'
+```
+
+Use `make aero` to run the V6.2 OpenVSP screen. Override `V62_VSPSCRIPT` with your executable path when needed. Solver outputs go to a fresh directory under `build/`. Use `make validate` for the original V5/V6.1 regression suite or `make help` for the complete command list.
+
+## Repository guide
+
+- [Current design](engineering/designs/v6.2/) contains CAD, print meshes, bench instructions and reproducible evidence.
+- [Earlier V6 design](engineering/designs/v6/) and [V5 baseline](engineering/baselines/v5/) document prior revisions.
+- [V5 audit](engineering/audits/v5-configuration-b/) contains the independent engineering review.
+- [Contributor guide](AGENTS.md) explains change and verification conventions. The [original handoff](docs/history/v5-v6-handoff.md) records the earlier workflow and decisions.
