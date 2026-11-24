@@ -44,6 +44,12 @@ make check V62_OPENSCAD='/usr/bin/arch -x86_64 /Applications/OpenSCAD.app/Conten
 
 Use `make aero` to run the V6.2 OpenVSP screen. Override `V62_VSPSCRIPT` with your executable path when needed. Solver outputs go to a fresh directory under `build/`. Use `make validate` for the original V5/V6.1 regression suite or `make help` for the complete command list.
 
+## License
+
+The [KumaDrone Hobby License](LICENSE.md) allows personal, noncommercial builds and modifications. If you share a modified design or a build made from it, include the matching editable source under the same terms. Business, paid fabrication, military, and defense use are outside the public license. The design is supplied as-is.
+
+See [Contributing](CONTRIBUTING.md) before submitting changes.
+
 ## Repository guide
 
 - [Current design](engineering/designs/v6.2/) contains CAD, print meshes, bench instructions and reproducible evidence.
